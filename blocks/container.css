@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  grid-template: 0.4fr 2.7fr 0.5fr/ 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-auto-rows: 100px;
+  background-color: #000000;
+  padding: 0 100px;
+  justify-content: center;
+  align-content: center;
+  font-family: Inter, Arial, sans-serif;
+}

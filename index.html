@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- META DATOS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HTMl, CSS avanzados y JS" />
+    <meta name="keywords" content="HTML, CSS y JS" />
+    <meta name="author" content="Berenice Aparicio Zúñiga" />
+    <!-- LINK -->
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Around The U.S.</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="./images/logo.png" alt="Logo" class="header__logo" />
+        <hr class="header__division" />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <img
+            src="./images/avatar.png"
+            alt="avatar user"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <!-- BOTON PARA EDITAR -->
+            <button class="profile__button-edit"></button>
+            <h2 class="profile__info-name">Jacques Cousteau</h2>
+            <p class="profile__info-about">Explorer</p>
+          </div>
+          <!-- BUTTON PARA AGREGAR -->
+          <button class="profile__button-add"></button>
+          <!-- MODAL PARA EDITAR LOS CAMPOS DE ENTRADA-->
+          <!-- pop_opened es un modificador -->
+          <section class="popup">
+            <!-- boton para cerrar -->
+            <button type="button" class="popup__close"></button>
+            <!-- Bloque del formulario -->
+            <div class="popup__container">
+              <!-- Formulario -->
+              <form action="" class="form" name="form">
+                <h3 class="popup__title">Edit profile</h3>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="name__user"
+                  class="form__input-name"
+                  placeholder="Nombre"
+                />
+                <input
+                  type="text"
+                  name="about__me"
+                  id="about__me"
+                  class="form__input-aboutme"
+                  placeholder="Acerca de mi"
+                />
+                <!-- El modal debe de estar cerca del boton -->
+                <button
+                  type="submit"
+                  class="form__button-save"
+                  id="boton__save"
+                >
+                  Save
+                </button>
+              </form>
+            </div>
+          </section>
+          <!-- T E R M I N A   P O P   U P   -->
+        </section>
+        <!-- I N I C I A   S E C C I O N   E L E M E N T O S -->
+        <section class="cards">
+          <!-- CARD 1 -->
+          <div class="card">
+            <img
+              src="./images/birhat.jpg"
+              alt="Imagen birhat"
+              class="card__img"
+            />
+            <h3 class="card__name">Yosemite Valley</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+          <!-- CARD 2 -->
+          <div class="card">
+            <img
+              src="./images/colors.jpg"
+              alt="Imagen Colors"
+              class="card__img"
+            />
+            <h3 class="card__name">Lake Louise</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+          <!-- CARD 3 -->
+          <div class="card">
+            <img src="./images/sol.jpg" alt="Imagen Sol" class="card__img" />
+            <h3 class="card__name">Bald Mountains</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+          <!-- CARD 4 -->
+          <div class="card">
+            <img
+              src="./images/mountains_people.jpg"
+              alt="mountains"
+              class="card__img"
+            />
+            <h3 class="card__name">Latemar</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+          <!-- CARD 5 -->
+          <div class="card">
+            <img
+              src="./images/kirill.png"
+              alt="Imagen kirill"
+              class="card__img"
+            />
+            <h3 class="card__name">Vanoise Nationa...</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+          <!-- CARD 6 -->
+          <div class="card">
+            <img
+              src="./images/melody.jpg"
+              alt="Imagen melody"
+              class="card__img"
+            />
+            <h3 class="card__name">Lago di Braies</h3>
+            <img
+              src="./images/heart.png"
+              alt="Icono Me gusta"
+              class="card__like"
+            />
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__firma">&copy; 2020 Around The U.S.</p>
+      </footer>
+    </div>
+    <!-- I N S E R T A R   S C R I P T   P A R A   R ED I R I G I R   A L   A R C H I V O   E X T E R N O -->
+    <script src="./js/script.js"></script>
+  </body>
+</html>

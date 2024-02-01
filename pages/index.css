@@ -1,0 +1,10 @@
+/* NORMALIZE */
+@import url(../vendor/normalize.css);
+/* Importar hojas de estilos */
+@import url(../blocks/container.css);
+@import url(../blocks/header.css);
+@import url(../blocks/main.css);
+@import url(../blocks/section.css);
+@import url(../blocks/footer.css);
+/* modal */
+@import url(../blocks/modal.css);

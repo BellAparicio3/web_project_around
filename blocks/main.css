@@ -1,0 +1,21 @@
+.main {
+  display: grid;
+  grid-template: 0.5fr 1.5fr/1fr 1fr 1fr;
+  grid-template-areas:
+    "profile profile profile"
+    "cards cards cards";
+  grid-area: main;
+  justify-content: center;
+}
+
+@media screen and (min-width: 320px) and(max-width: 1280px) {
+  .main {
+    display: grid;
+    grid-template: repeat(2, 0.1fr) / 1fr;
+    grid-template-areas:
+      "profile"
+      "cards";
+    grid-area: main;
+    justify-content: center;
+  }
+}
