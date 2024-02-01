@@ -8,4 +8,4 @@
    las tecnologias que se utilizaron en el proyecto son: Grid Layout para estructurar de mejor manera la página, asi como utilizar en algunas
    secciones Flexbox, asi como en JS se obtuvieron los datos desde HTML a JS asi como estar atentos a la escucha de lo que hace
    el usuario cuando selecciona el boton de editar asi como de guardar.
-4. El enlace a GitHub Pages
+4. El enlace a GitHub Pages: https://bellaparicio3.github.io/web_project_around/

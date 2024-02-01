@@ -54,7 +54,7 @@ boton__save.addEventListener("click", (e) => {
 });
 
 /*-Para cerrar el cuadro emergente, elimina el modificador popup_opened del mismo.*/
-opup__close.addEventListener("click", (e) => {
+popup__close.addEventListener("click", (e) => {
   e.preventDefault();
   popup.classList.remove("popup_opened");
 });
