@@ -29,6 +29,11 @@
   font-weight: 500;
   line-height: 48px;
 }
+.profile__info-name,
+.profile__info-about {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 .profile__button-edit {
   position: relative;

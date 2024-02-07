@@ -12,3 +12,16 @@
   align-content: center;
   font-family: Inter, Arial, sans-serif;
 }
+
+@media screen and (max-width: 690px) {
+  .container {
+    display: grid;
+    grid-template: 0.2fr 2.9fr 0.5fr/ 1fr;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-auto-rows: 100px;
+    padding: 0 100px;
+  }
+}
