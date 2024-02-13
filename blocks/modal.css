@@ -27,8 +27,6 @@
 .popup__close {
   width: 40px;
   height: 40px;
-  color: #fff;
-  font-weight: 500;
   position: absolute;
   right: 376px;
   top: 140px;
@@ -77,4 +75,40 @@
   cursor: pointer;
   background-color: #4e4c4c;
   outline: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 520px) {
+  .popup__container {
+    width: 282px;
+    height: 322px;
+    padding: 10px;
+    margin: 15% auto;
+  }
+  .popup__title {
+    padding: 10px 0px;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 21.78px;
+    text-align: left;
+    margin-left: 20px;
+  }
+  .popup__close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 90px;
+    top: 40px;
+  }
+  .form__input-name,
+  .form__input-aboutme {
+    width: 238px;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin: 0 auto;
+  }
+  .form__button-save {
+    width: 238px;
+    height: 46px;
+  }
 }

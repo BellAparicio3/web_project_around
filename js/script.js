@@ -48,8 +48,11 @@ Asi la pagina debe de actualizarse para reflejar los cambios realizados. */
 boton__save.addEventListener("click", (e) => {
   e.preventDefault();
 
+  profile__name.classList.add("profile__info-letra");
   profile__name.textContent = name__user.value;
+  profile__about_me.classList.add("profile__info-letra");
   profile__about_me.textContent = about__me.value;
+
   popup.classList.remove("popup_opened");
 });
 
@@ -60,7 +63,7 @@ popup__close.addEventListener("click", (e) => {
 });
 
 /*Cuando se de click en el like debe de cambiar de color */
-card__like.addEventListener("click", (e) => {
-  e.preventDefault();
-  card__like.src = "../images/heart_black.png";
+card__like.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  evt.target.classList.toggle("card__like-active");
 });
