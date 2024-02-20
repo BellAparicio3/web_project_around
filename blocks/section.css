@@ -31,6 +31,13 @@
   font-weight: 500;
   line-height: 48px;
 }
+<<<<<<< HEAD
+=======
+.profile__info-letra {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 .profile__button-edit {
   position: relative;
   left: 390px;
@@ -80,6 +87,7 @@
   white-space: nowrap;
   overflow: hidden;
 }
+<<<<<<< HEAD
 .card__trash {
   width: 18px;
   height: 19.3px;
@@ -89,6 +97,8 @@
   left: 233px;
   cursor: pointer;
 }
+=======
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 .card__img {
   max-width: 282px;
   min-height: 282px;

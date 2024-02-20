@@ -84,6 +84,7 @@
   outline: none;
 }
 
+<<<<<<< HEAD
 .popup__imagen {
   width: 500px;
   height: 500px;
@@ -111,6 +112,8 @@
   left: 387px;
 }
 
+=======
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 @media screen and (min-width: 320px) and (max-width: 520px) {
   .popup__container {
     width: 282px;
@@ -126,6 +129,7 @@
     text-align: left;
     margin-left: 20px;
   }
+<<<<<<< HEAD
   .popup__close-edit,
   .popup__close-add {
     width: 26px;
@@ -138,12 +142,24 @@
   .form__input-aboutme,
   .form__input-title,
   .form__input-imageurl {
+=======
+  .popup__close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 90px;
+    top: 40px;
+  }
+  .form__input-name,
+  .form__input-aboutme {
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
     width: 238px;
     height: 27px;
     border: none;
     border-bottom: 1px solid #000;
     margin: 0 auto;
   }
+<<<<<<< HEAD
   .form__button-save,
   .form__button-create {
     width: 238px;
@@ -172,4 +188,10 @@
     right: 26px;
     top: 27px;
   }
+=======
+  .form__button-save {
+    width: 238px;
+    height: 46px;
+  }
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 }

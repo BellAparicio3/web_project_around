@@ -65,9 +65,16 @@ Asi la pagina debe de actualizarse para reflejar los cambios realizados. */
 botonSaveEdit.addEventListener("click", (e) => {
   e.preventDefault();
 
+  profile__name.classList.add("profile__info-letra");
   profile__name.textContent = name__user.value;
+  profile__about_me.classList.add("profile__info-letra");
   profile__about_me.textContent = about__me.value;
+<<<<<<< HEAD
   popupEdit.classList.remove("popup__opened");
+=======
+
+  popup.classList.remove("popup_opened");
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 });
 
 /*-Para cerrar el cuadro emergente, elimina el modificador popup_opened del mismo.*/
@@ -76,6 +83,7 @@ popup__close_edit.addEventListener("click", (e) => {
   popupEdit.classList.remove("popup__opened");
 });
 
+<<<<<<< HEAD
 // A G R E G A R   T A R J E T A S   D E   I M A G E N E S 
 
 // BUTTON ADD MUESTRA POPUP FORMULARIO PARA AGREGAR TITULO Y URL
@@ -83,6 +91,12 @@ profile__button_add.addEventListener("click", (e) => {
   // preventDefault previene que se ejecute en automatico
   e.preventDefault();
   popupAdd.classList.add("popup__opened");
+=======
+/*Cuando se de click en el like debe de cambiar de color */
+card__like.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  evt.target.classList.toggle("card__like-active");
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 });
 
 // BUTTON CLOSE CIERRA EL POPUP FORMULARIO

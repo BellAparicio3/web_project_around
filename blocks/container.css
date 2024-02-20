@@ -17,7 +17,11 @@
 @media screen and (min-width: 320px) and (max-width: 520px) {
   .container {
     display: grid;
+<<<<<<< HEAD
     grid-template: 0.04fr 2.3fr 0.2fr/ 1fr;
+=======
+    grid-template: 0.02fr 2.5fr 0.2fr/ 1fr;
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
     grid-template-areas:
       "header"
       "main"
