@@ -8,10 +8,10 @@
   justify-content: center;
 }
 
-@media screen and (min-width: 320px) and(max-width: 1280px) {
+@media screen and (min-width: 320px) and(max-width: 520px) {
   .main {
     display: grid;
-    grid-template: repeat(2, 0.1fr) / 1fr;
+    grid-template: repeat(2, 0.6fr) / 1fr;
     grid-template-areas:
       "profile"
       "cards";
