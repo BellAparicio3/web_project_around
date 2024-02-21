@@ -114,7 +114,7 @@
   border: none;
 }
 .card__like:hover {
-  color: #ffffff57;
+  color: #682626b0;
   cursor: pointer;
 }
 /* Clase cuando se active el me gusta */
