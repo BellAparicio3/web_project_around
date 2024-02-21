@@ -10,3 +10,9 @@
   line-height: 22px;
   margin-left: 118px;
 }
+
+@media screen and (min-width: 320px) and (max-width: 520px) {
+  .footer__firma {
+    margin-left: 18px;
+  }
+}
