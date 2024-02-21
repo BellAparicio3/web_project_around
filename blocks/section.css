@@ -25,6 +25,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .profile__info-name {
   font-size: 42px;
@@ -78,6 +82,7 @@
   border-radius: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
 }
 .card__trash {
@@ -89,9 +94,11 @@
   left: 233px;
   cursor: pointer;
 }
+
 .card__img {
   max-width: 282px;
   min-height: 282px;
+  cursor: pointer;
   cursor: pointer;
   border-radius: 10px 10px 0 0;
 }
@@ -111,10 +118,11 @@
   position: relative;
   top: -45px;
   left: 252px;
+  left: 252px;
   border: none;
 }
 .card__like:hover {
-  color: #ffffff57;
+  color: #682626b0;
   cursor: pointer;
 }
 /* Clase cuando se active el me gusta */
@@ -131,6 +139,7 @@
   .profile {
     display: grid;
     grid-template: repeat(3, 1.28fr) / 1fr;
+    grid-template: repeat(3, 1.28fr) / 1fr;
     grid-template-areas:
       "profile__avatar"
       "profile__info"
@@ -139,6 +148,7 @@
     justify-content: center;
   }
   .profile__avatar {
+    grid-area: profile__avatar;
     grid-area: profile__avatar;
     margin: auto;
   }
@@ -150,6 +160,7 @@
 
   .profile__button-edit {
     grid-area: profile__button-edit;
+    grid-area: profile__button-edit;
     position: relative;
     left: 100px;
     top: 78px;
@@ -160,6 +171,7 @@
     height: 50px;
     background-color: #000;
     border: 2.5px solid #fff;
+    background: url(../images/plus.svg) center no-repeat;
     background: url(../images/plus.svg) center no-repeat;
   }
 
@@ -193,6 +205,12 @@
     top: 137px;
   }
   .profile__button-add {
+    grid-area: profile__button-add;
+    width: 94%;
+    height: 50px;
+    background-color: #000;
+    border: 2.5px solid #fff;
+    background: url(../images/plus.svg) center no-repeat;
     grid-area: profile__button-add;
     width: 94%;
     height: 50px;
@@ -246,5 +264,12 @@
     background-repeat: no-repeat;
     background-position: center;
     justify-self: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    background-color: #000;
+    background-image: url(../images/edition.svg);
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }

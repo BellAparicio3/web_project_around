@@ -4,7 +4,10 @@
   grid-template-rows: 1fr;
   grid-template-areas: "header__logo";
   grid-area: header;
+<<<<<<< HEAD
   position: relative;
+=======
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 }
 .header__logo {
   grid-area: header__logo;
@@ -15,8 +18,13 @@
   width: 80%;
   max-width: 880px;
   position: absolute;
+<<<<<<< HEAD
   top: 92px;
   left: 128px;
+=======
+  top: 117px;
+  left: 225px;
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
 }
 
 /* M E D I A     Q U E R I E S 320PX */

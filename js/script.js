@@ -50,6 +50,7 @@ los campos de nombre y acerca de mi deben de rellenarse con los valores que apar
 function openProfileEdit(e) {
   e.preventDefault();
   popupEdit.classList.add("popup__opened");
+  popupEdit.classList.add("popup__opened");
   //los valores de html se agregan al formulario del modal
   nameUser.value = profileName;
   aboutMe.value = profileAboutMe;

@@ -35,13 +35,14 @@
           <!-- MODAL PARA EDITAR LOS CAMPOS DE ENTRADA-->
           <!-- pop_opened es un modificador -->
           <section class="popup">
+<<<<<<< HEAD
             <div class="popup__edit">
               <!-- boton para cerrar -->
               <button type="button" class="popup__close-edit"></button>
               <!-- Bloque del formulario -->
-              <div class="form">
+              <div class="popup__container">
                 <!-- Formulario -->
-                <form class="form__edit" name="form">
+                <form class="form" name="form">
                   <h3 class="popup__title">Edit profile</h3>
                   <input
                     type="text"
@@ -71,16 +72,16 @@
               </div>
             </div>
           </section>
-          <!-- T E R M I N A   P O P U P  E D I  T A R -->
+          <!-- T E R M I N A   P O P   U P  E D I  T A R -->
           <!-- S E C C I O N   P A R A   A Ñ A D I R   U N A   T A R J E T A -->
           <section class="popup">
             <div class="popup__add">
               <!-- boton para cerrar -->
               <button type="button" class="popup__close-add"></button>
               <!-- Bloque del formulario -->
-              <div class="form">
+              <div class="popup__container">
                 <!-- Formulario -->
-                <form class="form__add" name="form">
+                <form class="form" name="form">
                   <h3 class="popup__title">Nuevo Lugar</h3>
                   <input
                     type="text"
@@ -110,6 +111,40 @@
                   </button>
                 </form>
               </div>
+=======
+            <!-- boton para cerrar -->
+            <button type="button" class="popup__close"></button>
+            <!-- Bloque del formulario -->
+            <div class="popup__container">
+              <!-- Formulario -->
+              <form class="form" name="form">
+                <h3 class="popup__title">Edit profile</h3>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="name__user"
+                  class="form__input-name"
+                  placeholder="Nombre"
+                  required
+                />
+                <input
+                  type="text"
+                  name="about__me"
+                  id="about__me"
+                  class="form__input-aboutme"
+                  placeholder="Acerca de mi"
+                  required
+                />
+                <!-- El modal debe de estar cerca del boton -->
+                <button
+                  type="submit"
+                  class="form__button-save"
+                  id="boton__save"
+                >
+                  Save
+                </button>
+              </form>
+>>>>>>> 79946f458c12622c38cd46c44caf4de0bec9f2bc
             </div>
           </section>
         </section>
