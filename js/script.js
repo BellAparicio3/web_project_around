@@ -101,15 +101,15 @@ popupCloseAdd.addEventListener("click", closeFormAdd);
 const initialCards = [
   {
     name: "Mountains",
-    link: "../images/mountains_people.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
   {
     name: "Colors",
-    link: "../images/colors.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
   },
   {
     name: "Birhat",
-    link: "../images/birhat.jpg",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
   },
   {
     name: "Montañas Calvas",
