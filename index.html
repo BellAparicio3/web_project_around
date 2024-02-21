@@ -35,123 +35,117 @@
           <!-- MODAL PARA EDITAR LOS CAMPOS DE ENTRADA-->
           <!-- pop_opened es un modificador -->
           <section class="popup">
-            <!-- boton para cerrar -->
-            <button type="button" class="popup__close"></button>
-            <!-- Bloque del formulario -->
-            <div class="popup__container">
-              <!-- Formulario -->
-              <form action="" class="form" name="form">
-                <h3 class="popup__title">Edit profile</h3>
-                <input
-                  type="text"
-                  name="nombre"
-                  id="name__user"
-                  class="form__input-name"
-                  placeholder="Nombre"
-                  required
-                />
-                <input
-                  type="text"
-                  name="about__me"
-                  id="about__me"
-                  class="form__input-aboutme"
-                  placeholder="Acerca de mi"
-                  required
-                />
-                <!-- El modal debe de estar cerca del boton -->
-                <button
-                  type="submit"
-                  class="form__button-save"
-                  id="boton__save"
-                >
-                  Save
-                </button>
-              </form>
+            <div class="popup__edit">
+              <!-- boton para cerrar -->
+              <button type="button" class="popup__close-edit"></button>
+              <!-- Bloque del formulario -->
+              <div class="form">
+                <!-- Formulario -->
+                <form class="form__edit" name="form">
+                  <h3 class="popup__title">Edit profile</h3>
+                  <input
+                    type="text"
+                    name="nombre"
+                    id="name__user"
+                    class="form__input-name"
+                    placeholder="Nombre"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="about__me"
+                    id="about__me"
+                    class="form__input-aboutme"
+                    placeholder="Acerca de mi"
+                    required
+                  />
+                  <!-- El modal debe de estar cerca del boton -->
+                  <button
+                    type="submit"
+                    class="form__button-save"
+                    id="boton__save-edit"
+                  >
+                    Save
+                  </button>
+                </form>
+              </div>
             </div>
           </section>
-          <!-- T E R M I N A   P O P   U P   -->
+          <!-- T E R M I N A   P O P U P  E D I  T A R -->
+          <!-- S E C C I O N   P A R A   A Ñ A D I R   U N A   T A R J E T A -->
+          <section class="popup">
+            <div class="popup__add">
+              <!-- boton para cerrar -->
+              <button type="button" class="popup__close-add"></button>
+              <!-- Bloque del formulario -->
+              <div class="form">
+                <!-- Formulario -->
+                <form class="form__add" name="form">
+                  <h3 class="popup__title">Nuevo Lugar</h3>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    class="form__input-title"
+                    placeholder="Tiulo"
+                    minlength="8"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="image_url"
+                    id="image_url"
+                    class="form__input-imageurl"
+                    placeholder="Enlace a la imagen"
+                    minlength="20"
+                    required
+                  />
+                  <!-- El modal debe de estar cerca del boton -->
+                  <button
+                    type="submit"
+                    class="form__button-create"
+                    id="boton__create"
+                  >
+                    Crear
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
         </section>
         <!-- I N I C I A   S E C C I O N   E L E M E N T O S -->
-        <section class="cards">
-          <!-- CARD 1 -->
-          <div class="card">
-            <img
-              src="./images/birhat.jpg"
-              alt="Imagen birhat"
-              class="card__img"
-            />
-            <h3 class="card__name">Yosemite Valley</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
-          </div>
-          <!-- CARD 2 -->
-          <div class="card">
-            <img
-              src="./images/colors.jpg"
-              alt="Imagen Colors"
-              class="card__img"
-            />
-            <h3 class="card__name">Lake Louise</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
-          </div>
-          <!-- CARD 3 -->
-          <div class="card">
-            <img src="./images/sol.jpg" alt="Imagen Sol" class="card__img" />
-            <h3 class="card__name">Bald Mountains</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
-          </div>
-          <!-- CARD 4 -->
-          <div class="card">
-            <img
-              src="./images/mountains_people.jpg"
-              alt="mountains"
-              class="card__img"
-            />
-            <h3 class="card__name">Latemar</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
-          </div>
-          <!-- CARD 5 -->
-          <div class="card">
-            <img
-              src="./images/kirill.png"
-              alt="Imagen kirill"
-              class="card__img"
-            />
-            <h3 class="card__name">Vanoise Nationa...</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
-          </div>
-          <!-- CARD 6 -->
-          <div class="card">
-            <img
-              src="./images/melody.jpg"
-              alt="Imagen melody"
-              class="card__img"
-            />
-            <h3 class="card__name">Lago di Braies</h3>
-            <img
-              src="./images/heart.png"
-              alt="Icono Me gusta"
-              class="card__like"
-            />
+        <section class="cards"></section>
+        <!-- Un template es una plantilla, elemento que no se renderiza en el HTML
+          cualquier elemento dentro de la plantilla no va a aparecer en HTML -->
+        <section class="template">
+          <template class="template__card">
+            <!-- PLANTILLA DE UNA CARD -->
+            <div class="card">
+              <!-- El src se va a agregar dinamicamente -->
+              <img
+                src="./images/melody.jpg"
+                alt="Imagen aleatoria"
+                class="card__img"
+              />
+              <p class="card__name"></p>
+              <img
+                src="./images/heart.png"
+                alt="Icono Me gusta"
+                class="card__like"
+              />
+              <img src="./images/trash.svg" alt="" class="card__trash" />
+            </div>
+          </template>
+        </section>
+
+        <!-- S E C C I O N   P O P U P   I M A G E N E S   -->
+        <section class="popup">
+          <div class="popup__images">
+            <!-- boton para cerrar -->
+            <button type="button" class="popup__close-images"></button>
+            <!-- El src se va a agregar dinamicamente -->
+            <img src="./images/melody.jpg" alt="" class="popup__imagen" />
+            <p class="popup__name"></p>
           </div>
         </section>
       </main>
