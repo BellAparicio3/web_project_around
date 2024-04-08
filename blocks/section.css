@@ -5,10 +5,12 @@
   align-items: center;
   display: grid;
   /* Primer van las filas y despues las columnas */
-  grid-template: 0.5fr/ 0.7fr 1.3fr 1fr;
+  grid-template: 0.7fr/ 0.7fr 1.3fr 1fr;
   grid-template-areas: "profile__avatar profile__info profile__button-add";
   grid-area: profile;
   justify-content: space-around;
+  height: 200px;
+  margin-bottom: 5px;
 }
 /* imagen profile */
 .profile__avatar {
@@ -22,14 +24,24 @@
   grid-area: profile__info;
   justify-items: center;
 
-  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 .profile__info-name {
   font-size: 42px;
   font-weight: 500;
   line-height: 48px;
+  width: 80%;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.profile__info-about {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .profile__button-edit {
   position: relative;
@@ -67,43 +79,57 @@
 .cards {
   grid-area: cards;
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 .card {
-  background-color: #ffffff;
+  max-width: 282px;
+  min-height: 282px;
+  width: 100%;
+  height: 120%;
+  background-color: #fff;
   border-radius: 10px;
-  text-overflow: ellipsis;
+
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+.card__info {
+  max-width: 282px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
 .card__trash {
   width: 18px;
   height: 19.3px;
   border: none;
   position: relative;
-  top: -348px;
+  top: -349px;
   left: 233px;
   cursor: pointer;
 }
 .card__img {
   max-width: 282px;
+  width: 100%;
   min-height: 282px;
   cursor: pointer;
   border-radius: 10px 10px 0 0;
 }
 .card__name {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
   padding-left: 15px;
+  width: 85%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .card__like {
   width: 20.76px;
@@ -137,6 +163,9 @@
       "profile__button-add";
     grid-area: profile;
     justify-content: center;
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
   }
   .profile__avatar {
     grid-area: profile__avatar;
@@ -151,16 +180,19 @@
   .profile__button-edit {
     grid-area: profile__button-edit;
     position: relative;
-    left: 100px;
-    top: 78px;
+    left: 72px;
+    top: 134px;
   }
+
   .profile__button-add {
     grid-area: profile__button-add;
     width: 100%;
-    height: 50px;
     background-color: #000;
     border: 2.5px solid #fff;
-    background: url(../images/plus.svg) center no-repeat;
+    background-image: url(../images/plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-self: center;
   }
 
   /* I N I C I A   S E C C I O N   E L E M E N T _ _ C A R D S  */
@@ -171,16 +203,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-}
-
-@media only screen and (min-width: 320px) and (max-width: 520px) {
-  /* I N I C I A   S E C C I O N     P R O F I L E */
-  .profile__button-edit {
-    grid-area: profile__button-edit;
-    position: relative;
-    left: 72px;
-    top: 134px;
   }
 }
 

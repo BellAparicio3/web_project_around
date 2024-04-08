@@ -4,7 +4,7 @@
   grid-template-rows: 1fr;
   grid-template-areas: "header__logo";
   grid-area: header;
-  position: relative;
+  height: 200px;
 }
 .header__logo {
   grid-area: header__logo;
@@ -15,10 +15,9 @@
   width: 80%;
   max-width: 880px;
   position: absolute;
-  top: 111px;
-  left: 123px;
+  top: 162px;
+  left: 209px;
 }
-
 /* M E D I A     Q U E R I E S 320PX */
 @media screen and (min-width: 320px) and (max-width: 520px) {
   .header {

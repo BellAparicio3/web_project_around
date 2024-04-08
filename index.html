@@ -27,8 +27,8 @@
           <div class="profile__info">
             <!-- BOTON PARA EDITAR -->
             <button class="profile__button-edit"></button>
-            <h2 class="profile__info-name">Jacques Cousteau</h2>
-            <p class="profile__info-about">Explorer</p>
+            <h2 class="profile__info-name" id="profile__name">Jacques Cousteau</h2>
+            <p class="profile__info-about" id="profile__aboutme">Explorer</p>
           </div>
           <!-- BUTTON PARA AGREGAR -->
           <button class="profile__button-add"></button>
@@ -41,28 +41,38 @@
               <!-- Bloque del formulario -->
               <div class="form">
                 <!-- Formulario -->
-                <form class="form__edit" name="form">
-                  <h3 class="popup__title">Edit profile</h3>
+                <form class="form__edit" name="form" novalidate>
+                  <h3 class="form__title">Edit profile</h3>
                   <input
                     type="text"
+                    id="nameUser"
+                    class="form__input"
                     name="nombre"
-                    id="name__user"
-                    class="form__input-name"
                     placeholder="Nombre"
                     required
+                    minlength="2"
+                    maxlength="40"
                   />
+
+                  <span class="form__input-error nameUser-error"></span>
+
                   <input
                     type="text"
-                    name="about__me"
-                    id="about__me"
-                    class="form__input-aboutme"
+                    id="aboutMe"
+                    class="form__input"
+                    name="aboutMe"
                     placeholder="Acerca de mi"
                     required
+                    minlength="2"
+                    maxlength="200"
                   />
+
+                  <span class="form__input-error aboutMe-error"></span>
+
                   <!-- El modal debe de estar cerca del boton -->
                   <button
                     type="submit"
-                    class="form__button-save"
+                    class="form__button button-inactive"
                     id="boton__save-edit"
                   >
                     Save
@@ -80,30 +90,33 @@
               <!-- Bloque del formulario -->
               <div class="form">
                 <!-- Formulario -->
-                <form class="form__add" name="form">
-                  <h3 class="popup__title">Nuevo Lugar</h3>
+                <form class="form__add" name="form" novalidate>
+                  <h3 class="form__title">Nuevo Lugar</h3>
                   <input
                     type="text"
                     name="title"
                     id="title"
-                    class="form__input-title"
-                    placeholder="Tiulo"
-                    minlength="8"
+                    class="form__input"
+                    placeholder="Título"
                     required
+                    minlength="2"
+                    maxlength="30"
                   />
+                  <span class="form__input-error title-error"></span>
                   <input
                     type="text"
                     name="image_url"
-                    id="image_url"
-                    class="form__input-imageurl"
+                    id="imageUrl"
+                    class="form__input"
                     placeholder="Enlace a la imagen"
-                    minlength="20"
                     required
+                    minlength="2"
                   />
+                  <span class="form__input-error imageUrl-error"></span>
                   <!-- El modal debe de estar cerca del boton -->
                   <button
                     type="submit"
-                    class="form__button-create"
+                    class="form__button button-inactive"
                     id="boton__create"
                   >
                     Crear
@@ -121,19 +134,17 @@
           <template class="template__card">
             <!-- PLANTILLA DE UNA CARD -->
             <div class="card">
-              <!-- El src se va a agregar dinamicamente -->
-              <img
-                src="./images/melody.jpg"
-                alt="Imagen aleatoria"
-                class="card__img"
-              />
-              <p class="card__name"></p>
-              <img
-                src="./images/heart.png"
-                alt="Icono Me gusta"
-                class="card__like"
-              />
-              <img src="./images/trash.svg" alt="" class="card__trash" />
+              <!-- El src y alt se va a agregar dinamicamente -->
+              <img src="./images/melody.jpg" alt="" class="card__img" />
+              <div class="card__info">
+                <p class="card__name"></p>
+                <img
+                  src="./images/heart.png"
+                  alt="Icono Me gusta"
+                  class="card__like"
+                />
+                <img src="./images/trash.svg" alt="" class="card__trash" />
+              </div>
             </div>
           </template>
         </section>
@@ -143,8 +154,12 @@
           <div class="popup__images">
             <!-- boton para cerrar -->
             <button type="button" class="popup__close-images"></button>
-            <!-- El src se va a agregar dinamicamente -->
-            <img src="./images/melody.jpg" alt="" class="popup__imagen" />
+            <!-- El src y alt se va a agregar dinamicamente -->
+            <img
+              src="./images/melody.jpg"
+              alt="./images/melody.jpg"
+              class="popup__imagen"
+            />
             <p class="popup__name"></p>
           </div>
         </section>
@@ -155,5 +170,6 @@
     </div>
     <!-- I N S E R T A R   S C R I P T   P A R A   R E D I R I G I R   A L   A R C H I V O   E X T E R N O -->
     <script src="./js/script.js"></script>
+    <script src="./js/validate.js"></script>
   </body>
 </html>

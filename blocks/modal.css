@@ -44,16 +44,13 @@
 .popup__close:hover {
   color: #a0a0a0;
 }
-.popup__title {
+.form__title {
   padding: 15px 20px;
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
 }
-.form__input-name,
-.form__input-aboutme,
-.form__input-title,
-.form__input-imageurl {
+.form__input{
   width: 358px;
   height: 27.26px;
   border: none;
@@ -62,23 +59,21 @@
   margin-left: 22px;
   color: #000;
 }
-.form__input-name:focus,
-.form__input-aboutme:focus {
+.form__input:focus {
   outline: none;
   border-bottom: 3px solid navy;
 }
-.form__button-save,
-.form__button-create {
+.form__button {
   background-color: #000;
   width: 375px;
   height: 50.15px;
   color: #fff;
   border-radius: 3px;
   text-align: center;
-  margin: 45px 22px 0 25px;
+  margin: 25px 22px 0 25px;
 }
 
-.form__button-save:hover {
+.form__button:hover {
   cursor: pointer;
   background-color: #4e4c4c;
   outline: none;
@@ -111,6 +106,23 @@
   left: 387px;
 }
 
+
+/* VALIDACIONES */
+
+.form__input_type_error {
+  border-bottom-color: #ff0000;
+}
+.button_inactive {
+  color: #B8B8B8;
+  background: #EDEDED;
+  pointer-events: none;
+}
+.form__input-error{
+  font-size: 12px;
+  color: red;
+  margin-left: 33px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 520px) {
   .form {
     width: 282px;
@@ -131,21 +143,17 @@
     width: 26px;
     height: 26px;
     position: absolute;
-    right: 49px;
-    top: 31px;
+    right: 18px;
+    top: 21px;
   }
-  .form__input-name,
-  .form__input-aboutme,
-  .form__input-title,
-  .form__input-imageurl {
+  .form__input {
     width: 238px;
     height: 27px;
     border: none;
     border-bottom: 1px solid #000;
     margin: 0 auto;
   }
-  .form__button-save,
-  .form__button-create {
+  .form__button {
     width: 238px;
     height: 46px;
   }
