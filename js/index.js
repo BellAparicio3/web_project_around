@@ -6,9 +6,6 @@ import {
   formEdit,
 } from "./utils.js";
 
-let someStr = "Programé. Guardé. Empaqueté.";
- 
-
 // O B J E T O S   D E   V A L O R E S   D I N A M I C O S
 const saveForm = {
   formSelector: ".form__edit",
