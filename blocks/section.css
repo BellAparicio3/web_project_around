@@ -18,7 +18,7 @@
 
   max-width: 120px;
   min-height: 120px;
-  margin-left: 117px;
+  margin: 0 20px 0 117px;
 }
 .profile__info {
   grid-area: profile__info;
@@ -169,19 +169,30 @@
   }
   .profile__avatar {
     grid-area: profile__avatar;
-    margin: auto;
+    margin: 12px auto;
   }
   .profile__info {
     grid-area: profile__info;
     justify-items: center;
     text-align: center;
   }
+  .profile__info-name {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+    width: 100%;
+    margin: 0;
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   .profile__button-edit {
     grid-area: profile__button-edit;
     position: relative;
     left: 72px;
-    top: 134px;
+    top: 94px;
   }
 
   .profile__button-add {
@@ -224,7 +235,7 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 821px)  and (max-width: 1280px){
   /* I N I C I A   S E C C I O N     P R O F I L E */
   .profile {
     color: #ffffff;
