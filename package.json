@@ -1,0 +1,17 @@
+{
+  "name": "web_project_around",
+  "version": "1.0.0",
+  "description": "2. Descripción del proyecto y su funcionalidad: En este proyecto se creo la estructura semantica de HTML, complementando con\r    CSS para realizar una estructura con un buen diseño, asi como JavaScript para establecer lo dinamico de una página.\r    En la cual JS nos permite obtener datos del nombre y acerca de mi del usuario, para mostrarse y modificarse en el modal y una\r    vez guardados se muestran nuevamente la información. Además cuando seleccionas el boton agregar se agrega una imagen dinamicamente\r    ya no es necesario agregarla desde html, para las imagenes asi como checar que imagen estaba seleccionando el usuario para eliminar o darle me gusta asi como \r    mostrar la imagen en el popup\r 3. Una descripción de las tecnologías y técnicas utilizadas:\r    las tecnologias que se utilizaron en el proyecto son: Grid Layout para estructurar de mejor manera la página, asi como utilizar en algunas\r    secciones Flexbox, asi como en JS se obtuvieron los datos desde HTML a JS asi como estar atentos a la escucha de lo que hace\r    el usuario cuando selecciona el boton de editar asi como de guardar.\r    Se utilizaron arrays para las imagenes\r 4. El enlace a GitHub Pages: https://bellaparicio3.github.io/web_project_around/",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
