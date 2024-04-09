@@ -1,5 +1,9 @@
+// Importando hojas de estilo
+import "../pages/index.css"; 
+
 // Importando clases
 import { Card } from "./Card.js";
+import { Section } from "./Section.js";
 import { FormValidator } from "./FormValidator.js";
 import {
   formElement,

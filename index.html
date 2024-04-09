@@ -8,26 +8,32 @@
     <meta name="keywords" content="HTML, CSS y JS" />
     <meta name="author" content="Berenice Aparicio Zúñiga" />
     <!-- LINK -->
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
     <title>Around The U.S.</title>
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <img src="./images/logo.png" alt="Logo" class="header__logo" />
+        <img
+          src="<%= require('./images/logo.png')%>"
+          alt="Logo"
+          class="header__logo"
+        />
         <hr class="header__division" />
       </header>
       <main class="main">
         <section class="profile">
           <img
-            src="./images/avatar.png"
-            alt="avatar user"
             class="profile__avatar"
+            src="<%= require('./images/avatar.png')%>"
+            alt="avatar user"
           />
           <div class="profile__info">
             <!-- BOTON PARA EDITAR -->
             <button class="profile__button-edit"></button>
-            <h2 class="profile__info-name" id="profile__name">Jacques Cousteau</h2>
+            <h2 class="profile__info-name" id="profile__name">
+              Jacques Cousteau
+            </h2>
             <p class="profile__info-about" id="profile__aboutme">Explorer</p>
           </div>
           <!-- BUTTON PARA AGREGAR -->
@@ -110,11 +116,7 @@
                     minlength="2"
                   />
                   <span class="form__input-error imageUrl-error"></span>
-                  <button
-                    type="submit"
-                    class="form__button"
-                    id="boton__create"
-                  >
+                  <button type="submit" class="form__button" id="boton__create">
                     Crear
                   </button>
                 </form>
@@ -131,15 +133,23 @@
             <!-- PLANTILLA DE UNA CARD -->
             <div class="card">
               <!-- El src y alt se va a agregar dinamicamente -->
-              <img src="./images/melody.jpg" alt="" class="card__img" />
+              <img
+                class="card__img"
+                src="<%= require('./images/melody.jpg')%>"
+                alt=""
+              />
               <div class="card__info">
                 <p class="card__name"></p>
                 <img
-                  src="./images/heart.png"
-                  alt="Icono Me gusta"
                   class="card__like"
+                  src="<%= require('./images/heart.png')%>"
+                  alt="Icono Me gusta"
                 />
-                <img src="./images/trash.svg" alt="" class="card__trash" />
+                <img
+                  class="card__trash"
+                  src="<%= require('./images/trash.svg')%>"
+                  alt="bote de basura"
+                />
               </div>
             </div>
           </template>
@@ -150,7 +160,7 @@
           <div class="popup__images">
             <button type="button" class="popup__close-images"></button>
             <img
-              src="./images/melody.jpg"
+              src="<%= require('./images/melody.jpg')%>"
               alt="Melody"
               class="popup__imagen"
             />
@@ -163,6 +173,6 @@
       </footer>
     </div>
     <!-- I N S E R T A R   S C R I P T   P A R A   R E D I R I G I R   A L   A R C H I V O   E X T E R N O -->
-    <script type="module" src="./js/index.js"></script>
+    <!-- <script type="module" src="./js/index.js"></script> -->
   </body>
 </html>
