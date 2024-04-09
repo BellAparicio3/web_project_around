@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin"); // plugin de conexión
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 // conecta mini-css-extract-plugin al proyecto
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -12,7 +13,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "main.js",
     publicPath: "",
-    clean: true,
   }, 
 	target: ['web', 'es5'], // asegúrate de que el código glue de Webpack sea también compatible con ES5
   stats: { children: true },
@@ -56,8 +56,9 @@ module.exports = {
   }, 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html" // ruta a nuestro archivo index.html
+      template: "./src/index.html" // ruta a nuestro archivo index.html
     }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin() // conecta el plugin para fusionar archivos CSS
   ],
 }
