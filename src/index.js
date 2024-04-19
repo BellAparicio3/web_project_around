@@ -1,14 +1,10 @@
 // Importando hojas de estilo
-import "../pages/index.css"; 
+import "../src/index.css";
 
 // Importando clases
-import { Card } from "./Card.js";
-import { Section } from "./Section.js";
-import { FormValidator } from "./FormValidator.js";
-import {
-  formElement,
-  formEdit,
-} from "./utils.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { formElement, formEdit } from "../components/utils.js";
 
 // O B J E T O S   D E   V A L O R E S   D I N A M I C O S
 const saveForm = {
@@ -28,9 +24,9 @@ const addForm = {
   inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error",
 };
+
 // Instancias de formValidator
 const formCard = new FormValidator(formElement, addForm);
 formCard.enableValidation();
 const formProfile = new FormValidator(formEdit, saveForm);
 formProfile.enableValidation();
-

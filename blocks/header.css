@@ -54,3 +54,18 @@
     left: 1px;
   }
 }
+@media screen and (min-width: 821px) and (max-width: 1280px) {
+  .header__logo {
+    grid-area: header__logo;
+    padding-top: 15px;
+    margin-left: 105px;
+  }
+  .header__division {
+    width: 100%;
+    max-width: 880px;
+    position: relative;
+    top: -89px;
+    left: 1px;
+  }
+  
+}

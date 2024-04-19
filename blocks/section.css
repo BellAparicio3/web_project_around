@@ -67,7 +67,7 @@
   background-image: url(../images/plus.svg);
   background-repeat: no-repeat;
   background-position: center;
-  justify-self: center;
+  /*justify-self: center;*/
 }
 .profile__button-add:hover {
   border: 2.5px solid #ffffff57;
@@ -236,6 +236,7 @@
 }
 
 @media only screen and (min-width: 821px)  and (max-width: 1280px){
+
   /* I N I C I A   S E C C I O N     P R O F I L E */
   .profile {
     color: #ffffff;
@@ -249,8 +250,8 @@
   }
   .profile__avatar {
     max-width: 120px;
-    min-height: 120px;
-    margin-left: 117px;
+    min-height: 98px;
+    margin-left: 27px;
   }
   .profile__info {
     grid-area: profile__info;
@@ -258,7 +259,7 @@
   }
   .profile__button-edit {
     position: relative;
-    left: 370px;
+    left: 350px;
     top: 78px;
     width: 24px;
     height: 24px;
