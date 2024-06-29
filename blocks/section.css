@@ -6,20 +6,46 @@
   display: grid;
   /* Primer van las filas y despues las columnas */
   grid-template: 0.7fr/ 0.7fr 1.3fr 1fr;
-  grid-template-areas: "profile__avatar profile__info profile__button-add";
+  grid-template-areas: "avatar__imagen profile__info profile__button-add";
   grid-area: profile;
   justify-content: space-around;
   height: 200px;
   margin-bottom: 5px;
 }
-/* imagen profile */
-.profile__avatar {
-  grid-area: profile__avatar;
+
+.avatar__imagen {
+  grid-area: avatar__imagen;
 
   max-width: 120px;
   min-height: 120px;
-  margin: 0 20px 0 117px;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
 }
+
+.profile__avatar {
+  position: relative;
+  display: inline-block;
+  margin: auto;
+}
+
+.avatar__edition {
+  position: absolute;
+  color: white;
+  visibility: hidden;
+}
+
+.avatar__imagen:hover + .avatar__edition {
+  visibility: visible;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  height: 10px;
+  right: 101px;
+  top: 12px;
+  cursor: pointer;
+  border: none;
+}
+
 .profile__info {
   grid-area: profile__info;
   justify-items: center;
@@ -33,12 +59,14 @@
   font-weight: 500;
   line-height: 48px;
   width: 80%;
+  margin: 0;
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .profile__info-about {
+  width: 80%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -54,20 +82,21 @@
   background-image: url(../images/edition.svg);
   background-repeat: no-repeat;
   background-position: center;
+  
 }
 .profile__button-edit:hover {
   border: 1px solid #ffffff57;
 }
 .profile__button-add {
   grid-area: profile__button-add;
-  width: 150px;
-  height: 50px;
+  height: 38%;
+  width: 70%;
   background-color: #000;
   border: 2.5px solid #fff;
   background-image: url(../images/plus.svg);
   background-repeat: no-repeat;
   background-position: center;
-  /*justify-self: center;*/
+  margin: auto;
 }
 .profile__button-add:hover {
   border: 2.5px solid #ffffff57;
@@ -106,13 +135,14 @@
 }
 
 .card__trash {
-  width: 18px;
-  height: 19.3px;
   border: none;
+  height: 19.3px;
+
   position: relative;
-  top: -349px;
-  left: 233px;
-  cursor: pointer;
+  left: 253px;
+  top: -273px;
+  width: 18px;
+  z-index: 1;
 }
 .card__img {
   max-width: 282px;
@@ -120,13 +150,15 @@
   min-height: 282px;
   cursor: pointer;
   border-radius: 10px 10px 0 0;
+  position: relative;
+  z-index: 1;
 }
 .card__name {
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
   padding-left: 15px;
-  width: 85%;
+  width: 80%;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -134,10 +166,11 @@
 .card__like {
   width: 20.76px;
   height: 18.13px;
+  border: none;
   position: relative;
   top: -45px;
-  left: 252px;
-  border: none;
+  left: 249px;
+  color: transparent;
 }
 .card__like:hover {
   color: #682626b0;
@@ -149,6 +182,16 @@
   background: url(../images/heart_black.svg) center no-repeat;
 }
 
+/* Contador de likes */
+.countLike {
+  color: #000;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 15.73px;
+  position: relative;
+  top: -20px;
+  left: 230px;
+}
 /* ---------------------------------------------------------------------------------------------------------------------------------------- */
 
 /* M E D I A S   Q U E R I E S 320PX */
@@ -158,7 +201,7 @@
     display: grid;
     grid-template: repeat(3, 1.28fr) / 1fr;
     grid-template-areas:
-      "profile__avatar"
+      "avatar__imagen"
       "profile__info"
       "profile__button-add";
     grid-area: profile;
@@ -167,22 +210,26 @@
     height: 400px;
     margin: 0 auto;
   }
-  .profile__avatar {
-    grid-area: profile__avatar;
-    margin: 12px auto;
+  .avatar__imagen {
+    grid-area: avatar__imagen;
+    margin: auto 90px;
   }
   .profile__info {
     grid-area: profile__info;
     justify-items: center;
     text-align: center;
   }
+  .profile__avatar {
+    margin: 0 auto;
+  }
+
   .profile__info-name {
     font-size: 42px;
     font-weight: 500;
     line-height: 48px;
     width: 100%;
     margin: 0;
-  
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -190,30 +237,13 @@
 
   .profile__button-edit {
     grid-area: profile__button-edit;
-    position: relative;
     left: 72px;
-    top: 94px;
+    top: 81px;
   }
 
   .profile__button-add {
     grid-area: profile__button-add;
     width: 100%;
-    background-color: #000;
-    border: 2.5px solid #fff;
-    background-image: url(../images/plus.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    justify-self: center;
-  }
-
-  /* I N I C I A   S E C C I O N   E L E M E N T _ _ C A R D S  */
-
-  .cards {
-    grid-area: cards;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
 
@@ -221,64 +251,64 @@
   /* I N I C I A   S E C C I O N     P R O F I L E */
   .profile__button-edit {
     grid-area: profile__button-edit;
-    position: relative;
-    left: 72px;
-    top: 137px;
+    left: 190px;
+    top: 81px;
   }
   .profile__button-add {
     grid-area: profile__button-add;
     width: 94%;
     height: 50px;
-    background-color: #000;
-    border: 2.5px solid #fff;
-    background: url(../images/plus.svg) center no-repeat;
   }
+  .profile__info-name {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+    width: 100%;
+    margin: 0;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .avatar__imagen {
+    margin: 12px auto;
+  }
+
 }
 
-@media only screen and (min-width: 821px)  and (max-width: 1280px){
 
+@media only screen and (min-width: 821px) and (max-width: 1280px) {
   /* I N I C I A   S E C C I O N     P R O F I L E */
   .profile {
-    color: #ffffff;
-    align-items: center;
     display: grid;
     /* Primer van las filas y despues las columnas */
     grid-template: 0.5fr/ 0.7fr 1.3fr 1fr;
-    grid-template-areas: "profile__avatar profile__info profile__button-add";
+    grid-template-areas: "avatar__imagen profile__info profile__button-add";
     grid-area: profile;
     justify-content: space-around;
   }
-  .profile__avatar {
+  .avatar__imagen {
     max-width: 120px;
     min-height: 98px;
-    margin-left: 27px;
+    margin-left: 47px;
   }
-  .profile__info {
-    grid-area: profile__info;
-    justify-items: center;
-  }
-  .profile__button-edit {
-    position: relative;
-    left: 350px;
-    top: 78px;
-    width: 24px;
-    height: 24px;
-    border: 1px solid #fff;
-    background-color: #000;
-    background-image: url(../images/edition.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
   .profile__button-add {
     grid-area: profile__button-add;
-    width: 150px;
+    width: 200px;
     height: 50px;
-    background-color: #000;
-    border: 2.5px solid #fff;
-    background-image: url(../images/plus.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    justify-self: center;
+  }
+
+}
+@media only screen and (min-width: 961px) and (max-width: 1025px) {
+  .profile__button-edit {
+    left: 285px;
+    top: 85px;
+  }
+}
+@media only screen and (min-width: 1026px) and (max-width: 1187px) {
+  .profile__button-edit {
+    left: 309px;
+    top: 85px;
   }
 }

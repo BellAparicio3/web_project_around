@@ -15,7 +15,7 @@
   width: 80%;
   max-width: 880px;
   position: absolute;
-  top: 162px;
+  top: 124px;
   left: 209px;
 }
 /* M E D I A     Q U E R I E S 320PX */
@@ -50,7 +50,7 @@
     width: 100%;
     max-width: 880px;
     position: relative;
-    top: 6px;
+    top: -124px;
     left: 1px;
   }
 }
@@ -64,8 +64,7 @@
     width: 100%;
     max-width: 880px;
     position: relative;
-    top: -89px;
+    top: -90px;
     left: 1px;
   }
-  
 }

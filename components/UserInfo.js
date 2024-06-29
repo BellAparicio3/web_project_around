@@ -1,3 +1,4 @@
+
 export class UserInfo {
   constructor(nameSelector, aboutUsSelector) {
     this.nameElement = document.querySelector(nameSelector);
@@ -5,13 +6,13 @@ export class UserInfo {
   }
   getUserInfo() {
     return{
-      name : this.nameElement.textContent,
-      aboutUs : this.aboutUsElement.textContent 
+      nameUser: this.nameElement.textContent,
+      aboutUs: this.aboutUsElement.textContent 
     };
   }
   setUserInfo(userInfo) {
-    this.nameElement.textContent = userInfo.name.value;
-    this.aboutUsElement.textContent = userInfo.aboutUs.value;
+    this.nameElement.textContent = userInfo.nameUser;
+    this.aboutUsElement.textContent = userInfo.aboutUs;
   }
 }
 

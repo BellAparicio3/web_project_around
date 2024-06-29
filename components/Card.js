@@ -1,38 +1,25 @@
-import { templateCard, popupClose, cards } from "./utils.js";
-import { Section } from "./Section.js";
-import { PopupWithImage } from "./PopupWithImage.js";
+import {
+  templateCard,
+  popupClose,
+  buttonConfirm,
+  buttonCloseConfirm,
+  likeButton
+} from "./utils.js";
 
+import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithConfirmation } from "./PopupWithConfirmation .js";
+import { api } from "../src/index.js";
+
+let count = 0;
 const popUpImages = new PopupWithImage(
   ".popup__images",
   ".popup__close-images"
 );
-// C A R G A R   I M A G E N E S  I N I C I A L E S   A   H T M L
-export const initialCards = [
-  {
-    name: "Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-  {
-    name: "Colors",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Birhat",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Parque Nacional",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+const popupConfirm = new PopupWithConfirmation(
+  ".popup__confirm",
+  ".popup__close-confirm"
+);
+
 
 export class Card {
   constructor(name, link, templateCard, handleCardClick) {
@@ -45,11 +32,12 @@ export class Card {
   _getTemplate() {
     this.card = templateCard.cloneNode(true).content.querySelector(".card");
   }
-
+  // Propiedades de la carta
   _setProperties() {
     this.cardImg = this.card.querySelector(".card__img");
     this.cardName = this.card.querySelector(".card__name");
     this.cardLike = this.card.querySelector(".card__like");
+    this.likeButton = this.card.querySelector(".card__like");
     this.buttonTrash = this.card.querySelector(".card__trash");
 
     this.cardImg.src = this.link;
@@ -57,17 +45,52 @@ export class Card {
     this.cardName.textContent = this.name;
   }
 
-  _handleDelete() {
-    this.card.remove();
+  _handleDelete(card) {
+    api.deleteCard(this.card).then(this.card.remove.bind(this.card));
+
+    popupConfirm.close();
+  }
+
+  updateCardLikes(cardElement, card) {
+    const likesCount = cardElement.querySelector('.likes-count');
+    const likeButton = cardElement.querySelector('.like-button');
+    likesCount.textContent = card.likes.length;
+    likeButton.textContent = card.likes.length > 0 ? '❤️' : '🖤';
   }
 
   _handleLike() {
-    this.cardLike.classList.toggle("card__like-active");
+    likeButton.addEventListener('click', () => {
+      if (likeButton.textContent === '🖤') {
+      api.likeCard(card._id)
+        .then(updatedCard => {
+          updateCardLikes(cardElement, updatedCard);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+      } 
+      else {
+      api.dislikeCard(card._id)
+        .then(updatedCard => {
+          updateCardLikes(cardElement, updatedCard);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+      }
+    });
   }
 
   // E V E N T O   P A R A   M O S T R A R   L A   I M A G E N   S E L E C C I O N A D A
   _handleOpenImagesPopup() {
     popUpImages.open(this.link, this.name);
+  }
+  // MUESTRA EL POPUP PARA CONFIRMAR LA ELIMINACIÓN
+  _handleOpenConfirmPopup() {
+    popupConfirm.open();
+    buttonConfirm.addEventListener("click", () => {
+      this._handleDelete();
+    });
   }
 
   // E V E N T O   P A R A   C E R R A R   L A   I M A G E N   S E L E C C I O N A D A
@@ -75,12 +98,16 @@ export class Card {
     popUpImages.setEventListeners();
   }
 
+  _handleCloseConfirmPopup() {
+    popupConfirm.close();
+  }
+
   // SetEventListener, Establece los eventos->Se crean los eventos
   _setEventListeners() {
     this.buttonTrash.addEventListener("click", () => {
-      this._handleDelete();
+      this._handleOpenConfirmPopup();
     });
-    this.cardLike.addEventListener("click", () => {
+    this.likeButton.addEventListener("click", () => {
       this._handleLike();
     });
     this.cardImg.addEventListener("click", () => {
@@ -88,6 +115,9 @@ export class Card {
     });
     popupClose.addEventListener("click", () => {
       this._handleCloseImagesPopup();
+    });
+    buttonCloseConfirm.addEventListener("click", () => {
+      this._handleCloseConfirmPopup();
     });
 
     this.regex = /\.(jpeg|jpg|png|gif|svg)$/i;
@@ -106,21 +136,6 @@ export class Card {
 }
 
 // creando instancias
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      // C A R G A N D O   I M A G E N E S  E N   E L   C O N T A I N E R -> SECTION
-      initialCards.forEach(function (item) {
-        const card = new Card(item.name, item.link, item.templateCard);
-        cards.append(card.generateCard());
-      });
-    },
-  },
-  ".cards"
-);
-
-cardSection.renderer();
 
 /* abstraccion
   CAPAS
