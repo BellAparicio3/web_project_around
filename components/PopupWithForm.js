@@ -3,13 +3,13 @@ import { Popup } from "./Popup.js";
 export class PopupWithForm extends Popup {
   constructor(popupSelector, buttonElement, handleSubmitForm) {
     super(popupSelector, buttonElement);
-    this.formElement = this.popupElement.querySelector(".forms");//clase general 
-    this.inputList = this.popupElement.querySelectorAll(".form__input")
+    this.formElement = this.popupElement.querySelector(".forms"); //clase general
+    this.inputList = this.popupElement.querySelectorAll(".form__input");
     this.handleSubmitForm = handleSubmitForm;
   }
   //Recopila los valores de los campos de entrada del formulario
   _getInputValues() {
-    this.formValues = {}
+    this.formValues = {};
     this.inputList.forEach((inputElement) => {
       this.formValues[inputElement.name] = inputElement.value;
     });

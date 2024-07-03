@@ -15,9 +15,8 @@
 
 .avatar__imagen {
   grid-area: avatar__imagen;
-
-  max-width: 120px;
-  min-height: 120px;
+  max-width: 150px;
+  min-height: 50px;
   width: 100%;
   height: auto;
   border-radius: 50%;
@@ -26,25 +25,24 @@
 .profile__avatar {
   position: relative;
   display: inline-block;
-  margin: auto;
 }
 
 .avatar__edition {
   position: absolute;
+  top: 0px;
+  right: 53px;
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
-  visibility: hidden;
+  padding: 73px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
 }
 
-.avatar__imagen:hover + .avatar__edition {
-  visibility: visible;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  height: 10px;
-  right: 101px;
-  top: 12px;
-  cursor: pointer;
-  border: none;
+.profile__avatar:hover .avatar__edition {
+  display: block;
 }
+
 
 .profile__info {
   grid-area: profile__info;
@@ -82,7 +80,6 @@
   background-image: url(../images/edition.svg);
   background-repeat: no-repeat;
   background-position: center;
-  
 }
 .profile__button-edit:hover {
   border: 1px solid #ffffff57;
@@ -274,9 +271,7 @@
   .avatar__imagen {
     margin: 12px auto;
   }
-
 }
-
 
 @media only screen and (min-width: 821px) and (max-width: 1280px) {
   /* I N I C I A   S E C C I O N     P R O F I L E */
@@ -289,8 +284,6 @@
     justify-content: space-around;
   }
   .avatar__imagen {
-    max-width: 120px;
-    min-height: 98px;
     margin-left: 47px;
   }
   .profile__button-add {
@@ -298,7 +291,6 @@
     width: 200px;
     height: 50px;
   }
-
 }
 @media only screen and (min-width: 961px) and (max-width: 1025px) {
   .profile__button-edit {

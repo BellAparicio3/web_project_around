@@ -103,48 +103,46 @@ export class Api {
     }).catch((err) => console.log(err));
   }
 
-  // deleteCard(cardId) {
-  //   return fetch(`${this.baseUrl}/cards/${cardId}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       authorization: this.token
-  //     }
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //     return Promise.reject(`Error: ${res.status}`);
-  //   });
-  // }
+  deleteCard(cardId) {
+    return fetch(`${this.baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this.token
+      }
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    }).then((data) => {
+      return data;
+    })
+  }
 
-  // updatePhotoProfile() {
-  //   return fetch(`${this.baseUrl}/user/me/avatar`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       authorization: this.token,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       avatar: "url.jpg",
-  //     }),
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //     // si el servidor devuelve un error, rechaza el promise
-  //     return Promise.reject(`Error: ${res.status}`);
-  //   }).then((data) => {
-  //     return data;
-  //   }).catch((error) => {
-  //     return error;
-  //   }).finally((res) => {
-  //     buttonUpdate.textContent = "";
-  //     console.log("Guardando", res);
-  //   });
-  // }
-  // savingInfo(button) {
-  //   button.textContent = "Guardando...";
-  // }
+  updatePhotoProfile(avatarId) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this.token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: avatarId,
+      })
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    }).then((data) => {
+      return data;
+    }).catch((error) => {
+      return error;
+    }).finally((res) => {
+      buttonUpdate.textContent = "";
+      console.log("Guardando", res);
+    });
+  }
 }
 /*
   GET: Para obtener datos.

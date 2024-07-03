@@ -44,17 +44,24 @@ export const urlUpdate = document.querySelector(".avatar__imagen");
 export const buttonUpdate = document.querySelector("#button__update");
 
 // Creando instancias de clases
-const popUpAdd = new PopupWithForm(".popup__add", ".popup__close-add", (data)=>{
-});
-export const userInfo = new UserInfo("#profile__name", "#profile__aboutme");
+const popUpAdd = new PopupWithForm(".popup__add", ".popup__close-add");
+export const userInfo = new UserInfo("#nameUser", "#aboutMe");
+
 const popupProfile = new PopupWithForm(".popup__edit", ".popup__close-edit", (data)=>{
   api.editUserInfo(data.name, data.about).then((user) => {
     userInfo.setUserInfo({ nameUser: user.name, aboutUs: user.about });
   });
 });
 popupProfile.setEventListeners();
-const updateAvatar = new PopupUpdate(".popup__update", ".popup__close-update");
 
+const updateAvatar = new PopupUpdate(".popup__update", ".popup__close-update", ()=> {
+  api.updatePhotoProfile(data.avatar).then((data) => {
+  console.log(data.avatar);
+  data.avatar = urlUpdate.url;
+  });
+});
+
+updateAvatar.setEventListeners();
 
 //FUNCION PARA ABRIR EL FORMULARIO EDIT
 export function openProfileEdit() {
@@ -63,7 +70,6 @@ export function openProfileEdit() {
 
 export function saveProfileInfo(e) {
   // Solo los submit llevan preventDefault
-  
 }
 
 export function closeProfileEdit() {
@@ -86,7 +92,8 @@ function openUpdateAvatar() {
 //Actualizar Avatar
 export function UpdateInfoAvatar(e) {
   e.preventDefault();
-  api.updatePhotoProfile("users/me").then((data) => {
+  api.updatePhotoProfile().then((data) => {
+    console.log(data.avatar);
     data.avatar = urlUpdate.url;
   });
   updateAvatar.close();
@@ -100,7 +107,7 @@ function closeButtonUpdate() {
 export function addCards(e) {
   e.preventDefault();
   const addCard = new Card(title.value, imageUrl.value, templateCard);
-  api.addCard(title, imageUrl);
+  api.addCard(title.value, imageUrl.value);
   // A Ñ A D E   L A   T A R J E T A   A L  P R I N C I P I O   C O N PREPEND
   cards.prepend(addCard.generateCard());
   popUpAdd.close();
@@ -117,5 +124,5 @@ popupCloseEdit.addEventListener("click", closeProfileEdit);
 
 //ACTUALIZAR AVATAR
 profileButtonUpdate.addEventListener("click", openUpdateAvatar);
-formUpdate.addEventListener("submit", UpdateInfoAvatar);
+formUpdate.addEventListener("submit", updateAvatar.close());
 buttonCloseUpdate.addEventListener("click", closeButtonUpdate);

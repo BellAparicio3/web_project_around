@@ -3,7 +3,7 @@ import {
   popupClose,
   buttonConfirm,
   buttonCloseConfirm,
-  likeButton
+  likeButton,
 } from "./utils.js";
 
 import { PopupWithImage } from "./PopupWithImage.js";
@@ -20,13 +20,13 @@ const popupConfirm = new PopupWithConfirmation(
   ".popup__close-confirm"
 );
 
-
 export class Card {
-  constructor(name, link, templateCard, handleCardClick) {
+  constructor(name, link, templateCard, handleCardClick, id) {
     this.name = name;
     this.link = link;
     this.templateCard = templateCard;
     this.handleCardClick = handleCardClick;
+    this.id = id;
   }
 
   _getTemplate() {
@@ -45,38 +45,34 @@ export class Card {
     this.cardName.textContent = this.name;
   }
 
-  _handleDelete(card) {
-    api.deleteCard(this.card).then(this.card.remove.bind(this.card));
-
-    popupConfirm.close();
-  }
 
   updateCardLikes(cardElement, card) {
-    const likesCount = cardElement.querySelector('.likes-count');
-    const likeButton = cardElement.querySelector('.like-button');
+    const likesCount = cardElement.querySelector(".likes-count");
+    const likeButton = cardElement.querySelector(".like-button");
     likesCount.textContent = card.likes.length;
-    likeButton.textContent = card.likes.length > 0 ? '❤️' : '🖤';
+    likeButton.textContent = card.likes.length > 0 ? "❤️" : "🖤";
   }
 
   _handleLike() {
-    likeButton.addEventListener('click', () => {
-      if (likeButton.textContent === '🖤') {
-      api.likeCard(card._id)
-        .then(updatedCard => {
-          updateCardLikes(cardElement, updatedCard);
-        })
-        .catch(err => {
-          console.error(err);
-        });
-      } 
-      else {
-      api.dislikeCard(card._id)
-        .then(updatedCard => {
-          updateCardLikes(cardElement, updatedCard);
-        })
-        .catch(err => {
-          console.error(err);
-        });
+    likeButton.addEventListener("click", () => {
+      if (likeButton.textContent === "🖤") {
+        api
+          .likeCard(card._id)
+          .then((updatedCard) => {
+            updateCardLikes(cardElement, updatedCard);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        api
+          .dislikeCard(card._id)
+          .then((updatedCard) => {
+            updateCardLikes(cardElement, updatedCard);
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       }
     });
   }
@@ -85,6 +81,13 @@ export class Card {
   _handleOpenImagesPopup() {
     popUpImages.open(this.link, this.name);
   }
+
+  _handleDelete() {
+    console.log(this.link, this.name, this.id)
+    api.deleteCard(this.id).then(this.card.remove(this.card));
+    popupConfirm.close();
+  }
+
   // MUESTRA EL POPUP PARA CONFIRMAR LA ELIMINACIÓN
   _handleOpenConfirmPopup() {
     popupConfirm.open();

@@ -26,7 +26,7 @@ api.getInitialCards().then((data) => {
       renderer: () => {
         // C A R G A N D O   I M A G E N E S  E N   E L   C O N T A I N E R -> SECTION
         data.forEach(function (item) {
-          const card = new Card(item.name, item.link, item.templateCard);
+          const card = new Card(item.name, item.link, item.templateCard, () => {}, item.id);
           cards.append(card.generateCard());
         });
       },
@@ -38,10 +38,11 @@ api.getInitialCards().then((data) => {
 
 api.loadUserInfo().then((data) => {
   userInfo.setUserInfo({ nameUser: data.name, aboutUs: data.about });
-})
-.catch(err => {
+}).catch(err => {
   console.error(err);
 });
+
+
 
 // O B J E T O S   D E   V A L O R E S   D I N A M I C O S
 const saveForm = {
@@ -72,7 +73,7 @@ const updateInfo = {
 };
 
 // Instancias de formValidator
-const formCard = new FormValidator(formElement, addForm);
+const formCard = new FormValidator(formElement[1], addForm);
 formCard.enableValidation();
 const formProfile = new FormValidator(formEdit, saveForm);
 formProfile.enableValidation();
