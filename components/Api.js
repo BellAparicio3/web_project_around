@@ -1,5 +1,3 @@
-//import { buttonUpdate} from "./utils.js";
-
 export class Api {
   constructor(baseUrl, token) {
     this.baseUrl = baseUrl;
@@ -49,7 +47,9 @@ export class Api {
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(result =>{
+      return result;
+    }).catch((err) => console.log(err));
   }
 
   addCard(name, link) {
@@ -68,7 +68,9 @@ export class Api {
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then((data) => {
+      return data;
+    }).catch((err) => console.log(err));
   }
 
   likeCard(cardId) {
@@ -119,15 +121,15 @@ export class Api {
     })
   }
 
-  updatePhotoProfile(avatarId) {
+  updatePhotoProfile(avatar) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
         authorization: this.token,
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        avatar: avatarId,
+        avatar: avatar
       })
     }).then((res) => {
       if (res.ok) {
@@ -138,9 +140,6 @@ export class Api {
       return data;
     }).catch((error) => {
       return error;
-    }).finally((res) => {
-      buttonUpdate.textContent = "";
-      console.log("Guardando", res);
     });
   }
 }

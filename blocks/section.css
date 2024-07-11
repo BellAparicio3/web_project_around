@@ -6,15 +6,15 @@
   display: grid;
   /* Primer van las filas y despues las columnas */
   grid-template: 0.7fr/ 0.7fr 1.3fr 1fr;
-  grid-template-areas: "avatar__imagen profile__info profile__button-add";
+  grid-template-areas: "profile__avatar-imagen profile__info profile__button-add";
   grid-area: profile;
   justify-content: space-around;
   height: 200px;
   margin-bottom: 5px;
 }
 
-.avatar__imagen {
-  grid-area: avatar__imagen;
+.profile__avatar-imagen {
+  grid-area: profile__avatar-imagen;
   max-width: 150px;
   min-height: 50px;
   width: 100%;
@@ -27,7 +27,7 @@
   display: inline-block;
 }
 
-.avatar__edition {
+.profile__avatar-edition {
   position: absolute;
   top: 0px;
   right: 53px;
@@ -39,7 +39,7 @@
   display: none;
 }
 
-.profile__avatar:hover .avatar__edition {
+.profile__avatar:hover .profile__avatar-edition {
   display: block;
 }
 
@@ -180,7 +180,7 @@
 }
 
 /* Contador de likes */
-.countLike {
+.card__like_count {
   color: #000;
   font-size: 18px;
   font-weight: 400;
@@ -188,6 +188,7 @@
   position: relative;
   top: -20px;
   left: 230px;
+  text-align: center;
 }
 /* ---------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -198,7 +199,7 @@
     display: grid;
     grid-template: repeat(3, 1.28fr) / 1fr;
     grid-template-areas:
-      "avatar__imagen"
+      "profile__avatar-imagen"
       "profile__info"
       "profile__button-add";
     grid-area: profile;
@@ -207,9 +208,12 @@
     height: 400px;
     margin: 0 auto;
   }
-  .avatar__imagen {
-    grid-area: avatar__imagen;
+  .profile__avatar-imagen {
+    grid-area: profile__avatar-imagen;
     margin: auto 90px;
+  }
+  .profile__avatar-edition {
+    right: 56px;
   }
   .profile__info {
     grid-area: profile__info;
@@ -268,8 +272,11 @@
     text-overflow: ellipsis;
   }
 
-  .avatar__imagen {
+  .profile__avatar-imagen {
     margin: 12px auto;
+  }
+  .profile__avatar-edition {
+    right: 56px;
   }
 }
 
@@ -279,11 +286,11 @@
     display: grid;
     /* Primer van las filas y despues las columnas */
     grid-template: 0.5fr/ 0.7fr 1.3fr 1fr;
-    grid-template-areas: "avatar__imagen profile__info profile__button-add";
+    grid-template-areas: "profile__avatar-imagen profile__info profile__button-add";
     grid-area: profile;
     justify-content: space-around;
   }
-  .avatar__imagen {
+  .profile__avatar-imagen {
     margin-left: 47px;
   }
   .profile__button-add {

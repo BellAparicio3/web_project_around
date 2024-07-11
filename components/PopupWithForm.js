@@ -28,6 +28,6 @@ export class PopupWithForm extends Popup {
   // Se restablecen los campos del formulario al cerrar el popup
   close() {
     super.close();
-    this.formElement.reset();
+    //this.formElement[1].reset();
   }
 }

@@ -3,14 +3,12 @@ import {
   popupClose,
   buttonConfirm,
   buttonCloseConfirm,
-  likeButton,
 } from "./utils.js";
 
 import { PopupWithImage } from "./PopupWithImage.js";
 import { PopupWithConfirmation } from "./PopupWithConfirmation .js";
 import { api } from "../src/index.js";
 
-let count = 0;
 const popUpImages = new PopupWithImage(
   ".popup__images",
   ".popup__close-images"
@@ -21,60 +19,55 @@ const popupConfirm = new PopupWithConfirmation(
 );
 
 export class Card {
-  constructor(name, link, templateCard, handleCardClick, id) {
+  constructor(name, link, templateCard, handleCardClick, id, likes) {
     this.name = name;
     this.link = link;
     this.templateCard = templateCard;
     this.handleCardClick = handleCardClick;
     this.id = id;
+    this.likes = likes;
   }
 
   _getTemplate() {
     this.card = templateCard.cloneNode(true).content.querySelector(".card");
   }
+
   // Propiedades de la carta
   _setProperties() {
     this.cardImg = this.card.querySelector(".card__img");
     this.cardName = this.card.querySelector(".card__name");
     this.cardLike = this.card.querySelector(".card__like");
-    this.likeButton = this.card.querySelector(".card__like");
+    this.likeButton = this.card.querySelector(".card__like_count");
     this.buttonTrash = this.card.querySelector(".card__trash");
 
     this.cardImg.src = this.link;
     this.cardImg.alt = this.name;
     this.cardName.textContent = this.name;
-  }
-
-
-  updateCardLikes(cardElement, card) {
-    const likesCount = cardElement.querySelector(".likes-count");
-    const likeButton = cardElement.querySelector(".like-button");
-    likesCount.textContent = card.likes.length;
-    likeButton.textContent = card.likes.length > 0 ? "❤️" : "🖤";
+    this.likeButton.textContent = this.likes.length;
+    if (this.likes.some(item=> item._id === "5f1ef69bb878ef5b06364d6a")) {
+      setTimeout(() => {
+        this.cardLike.classList.toggle("card__like-active");
+      }, 0);
+    }
   }
 
   _handleLike() {
-    likeButton.addEventListener("click", () => {
-      if (likeButton.textContent === "🖤") {
-        api
-          .likeCard(card._id)
-          .then((updatedCard) => {
-            updateCardLikes(cardElement, updatedCard);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      } else {
-        api
-          .dislikeCard(card._id)
-          .then((updatedCard) => {
-            updateCardLikes(cardElement, updatedCard);
-          })
-          .catch((err) => {
-            console.error(err);
-          });
-      }
-    });
+    if (!this.likes.some( item => item._id === "5f1ef69bb878ef5b06364d6a")) {
+      setTimeout(() => {
+        this.cardLike.classList.toggle("card__like-active");
+      }, 0);
+      api.likeCard(this.id).then((data) => {
+        this.likeButton.textContent = data.likes.length;
+      });
+    } else {
+      api.dislikeCard(this.id).then((data) => {
+        console.log(data.likes)
+        this.likeButton.textContent = data.likes.length;
+      });
+      setTimeout(() => {
+        this.cardLike.classList.toggle("card__like-active");
+      }, 0);
+    }
   }
 
   // E V E N T O   P A R A   M O S T R A R   L A   I M A G E N   S E L E C C I O N A D A
@@ -83,7 +76,6 @@ export class Card {
   }
 
   _handleDelete() {
-    console.log(this.link, this.name, this.id)
     api.deleteCard(this.id).then(this.card.remove(this.card));
     popupConfirm.close();
   }
@@ -110,7 +102,7 @@ export class Card {
     this.buttonTrash.addEventListener("click", () => {
       this._handleOpenConfirmPopup();
     });
-    this.likeButton.addEventListener("click", () => {
+    this.cardLike.addEventListener("click", () => {
       this._handleLike();
     });
     this.cardImg.addEventListener("click", () => {
@@ -137,9 +129,6 @@ export class Card {
     return this.card;
   }
 }
-
-// creando instancias
-
 /* abstraccion
   CAPAS
   un clon de tarjeta

@@ -2,7 +2,7 @@ import { Card } from "./Card.js";
 import { Popup } from "./Popup.js";
 import { UserInfo } from "./UserInfo.js";
 import { PopupWithForm } from "./PopupWithForm.js";
-import { PopupUpdate } from "./PopupUpdate.js";
+//import { PopupUpdate } from "./PopupUpdate.js";
 import { api } from "../src/index.js";
 // B O T O N   A G R E G A R
 const profileButtonEdit = document.querySelector(".profile__button-edit");
@@ -11,6 +11,10 @@ const popupCloseEdit = document.querySelector(".popup__close-edit");
 export const formEdit = document.querySelector(".forms");
 export const nameUser = formEdit.querySelector("#nameUser");
 export const aboutMe = formEdit.querySelector("#aboutMe");
+const formButtonEdit = formEdit.querySelector("#form__button_edit");
+export const profileName = document.querySelector("#profile__name");
+export const profileAboutMe = document.querySelector("#profile__aboutme");
+
 // M O D A L  P A R A   A G R E G A R
 export const cards = document.querySelector(".cards");
 /* B O T O N   A G R E G A R  I M A G E N E S   */
@@ -19,8 +23,7 @@ export const templateCard = document.querySelector(".template__card");
 export const formElement = document.querySelectorAll(".forms");
 export const title = formElement[1].querySelector("#title");
 export const imageUrl = formElement[1].querySelector("#imageUrl");
-//const buttonCreate = formElement.querySelector("#boton__create");
-export const likeButton = document.querySelector(".card__like");
+const formButtonAdd= document.querySelector("#form__button_add");
 
 // B O T O N   P A R A   C E R R A R   E L   P O P U P PARA AGREGAR TARJETAS
 const popupCloseAdd = document.querySelector(".popup__close-add");
@@ -34,34 +37,47 @@ export const popupClose = document.querySelector(".popup__close-images");
 export const buttonCloseConfirm = document.querySelector(
   ".popup__close-confirm"
 );
-export const buttonConfirm = document.querySelector(".button__confirm");
+export const buttonConfirm = document.querySelector("#button__confirm");
 //UPDATE AVATAR
-const profileButtonUpdate = document.querySelector(".avatar__edition");
+const profileButtonUpdate = document.querySelector(".profile__avatar-edition");
 export const formUpdate = document.querySelector(".form__update");
+const buttonUpdate = document.querySelector("#button__update");
 const buttonCloseUpdate = document.querySelector(".popup__close-update");
-//const updatePhoto = document.querySelector("#updatePhoto");
-export const urlUpdate = document.querySelector(".avatar__imagen");
-export const buttonUpdate = document.querySelector("#button__update");
+export const avatar = document.querySelector(".avatar__imagen");
+
+export const formBotton = document.querySelector(".form__button");
 
 // Creando instancias de clases
+export const userInfo = new UserInfo(
+  "#nameUser",
+  "#aboutMe",
+  ".avatar__imagen"
+);
 const popUpAdd = new PopupWithForm(".popup__add", ".popup__close-add");
-export const userInfo = new UserInfo("#nameUser", "#aboutMe");
+const updateAvatar = new PopupWithForm(
+  ".popup__update",
+  ".popup__close-update"
+);
 
-const popupProfile = new PopupWithForm(".popup__edit", ".popup__close-edit", (data)=>{
-  api.editUserInfo(data.name, data.about).then((user) => {
-    userInfo.setUserInfo({ nameUser: user.name, aboutUs: user.about });
-  });
-});
+const popupProfile = new PopupWithForm(
+  ".popup__edit",
+  ".popup__close-edit",
+  (data) => {
+    formButtonEdit.textContent = "Guardando..."; 
+    api.editUserInfo(data.name, data.about).then((data) => {
+      const user = new UserInfo(
+        "#profile__name",
+        "#profile__aboutme",
+        ".avatar__imagen"
+      );
+      user.setUserInfo({ nameUser: data.name, aboutUs: data.about });
+      setTimeout(() => {
+        formButtonEdit.textContent = "Guardar";
+      }, 6000);
+    });
+  }
+);
 popupProfile.setEventListeners();
-
-const updateAvatar = new PopupUpdate(".popup__update", ".popup__close-update", ()=> {
-  api.updatePhotoProfile(data.avatar).then((data) => {
-  console.log(data.avatar);
-  data.avatar = urlUpdate.url;
-  });
-});
-
-updateAvatar.setEventListeners();
 
 //FUNCION PARA ABRIR EL FORMULARIO EDIT
 export function openProfileEdit() {
@@ -92,11 +108,20 @@ function openUpdateAvatar() {
 //Actualizar Avatar
 export function UpdateInfoAvatar(e) {
   e.preventDefault();
-  api.updatePhotoProfile().then((data) => {
-    console.log(data.avatar);
-    data.avatar = urlUpdate.url;
+  const photo = document.querySelector("#updatePhoto").value;
+
+  buttonUpdate.textContent = "Guardando...";
+  api.updatePhotoProfile(photo).then((data) => {
+    avatar.src = data.avatar;
+    updateAvatar.close();
+    setTimeout(() => {
+      buttonUpdate.textContent = "Guardar";
+      formUpdate.reset();
+    }, 3000);
+  })
+  .catch((err) => {
+    console.error(err);
   });
-  updateAvatar.close();
 }
 
 function closeButtonUpdate() {
@@ -106,12 +131,18 @@ function closeButtonUpdate() {
 // F U N C I O N   A G R E G A R   T A R J E T A
 export function addCards(e) {
   e.preventDefault();
-  const addCard = new Card(title.value, imageUrl.value, templateCard);
-  api.addCard(title.value, imageUrl.value);
+  const addCard = new Card(title.value, imageUrl.value, templateCard, ()=>{}, "", []);
+  formButtonAdd.textContent = "Creando...";
+  api.addCard(title.value, imageUrl.value).then((data) =>{
   // A Ñ A D E   L A   T A R J E T A   A L  P R I N C I P I O   C O N PREPEND
   cards.prepend(addCard.generateCard());
   popUpAdd.close();
-  //buttonCreate.classList.add("button_inactive");
+  setTimeout(() => {
+    formButtonAdd.textContent = "Crear";
+  }, 3000); 
+  formElement[1].reset();
+  })
+ 
 }
 
 profileButtonAdd.addEventListener("click", buttonAddCards);
@@ -124,5 +155,5 @@ popupCloseEdit.addEventListener("click", closeProfileEdit);
 
 //ACTUALIZAR AVATAR
 profileButtonUpdate.addEventListener("click", openUpdateAvatar);
-formUpdate.addEventListener("submit", updateAvatar.close());
+formUpdate.addEventListener("submit", UpdateInfoAvatar);
 buttonCloseUpdate.addEventListener("click", closeButtonUpdate);

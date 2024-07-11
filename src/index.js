@@ -10,7 +10,9 @@ import {
   formEdit,
   formUpdate,
   cards,
-  userInfo
+  profileName,
+  profileAboutMe,
+  avatar
 } from "../components/utils.js";
 
 //instancia de la clase Api
@@ -26,7 +28,7 @@ api.getInitialCards().then((data) => {
       renderer: () => {
         // C A R G A N D O   I M A G E N E S  E N   E L   C O N T A I N E R -> SECTION
         data.forEach(function (item) {
-          const card = new Card(item.name, item.link, item.templateCard, () => {}, item.id);
+          const card = new Card(item.name, item.link, item.templateCard, () => {}, item._id, item.likes);
           cards.append(card.generateCard());
         });
       },
@@ -36,11 +38,18 @@ api.getInitialCards().then((data) => {
   cardSection.renderer();
 });
 
-api.loadUserInfo().then((data) => {
-  userInfo.setUserInfo({ nameUser: data.name, aboutUs: data.about });
+api.loadUserInfo().then((user) => {
+  profileName.textContent = user.name;
+  profileAboutMe.textContent = user.about;
+  avatar.src = user.avatar;
 }).catch(err => {
   console.error(err);
 });
+
+
+
+
+
 
 
 
