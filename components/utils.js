@@ -1,8 +1,6 @@
 import { Card } from "./Card.js";
-import { Popup } from "./Popup.js";
 import { UserInfo } from "./UserInfo.js";
 import { PopupWithForm } from "./PopupWithForm.js";
-//import { PopupUpdate } from "./PopupUpdate.js";
 import { api } from "../src/index.js";
 // B O T O N   A G R E G A R
 const profileButtonEdit = document.querySelector(".profile__button-edit");
@@ -14,7 +12,6 @@ export const aboutMe = formEdit.querySelector("#aboutMe");
 const formButtonEdit = formEdit.querySelector("#form__button_edit");
 export const profileName = document.querySelector("#profile__name");
 export const profileAboutMe = document.querySelector("#profile__aboutme");
-
 // M O D A L  P A R A   A G R E G A R
 export const cards = document.querySelector(".cards");
 /* B O T O N   A G R E G A R  I M A G E N E S   */
@@ -24,7 +21,6 @@ export const formElement = document.querySelectorAll(".forms");
 export const title = formElement[1].querySelector("#title");
 export const imageUrl = formElement[1].querySelector("#imageUrl");
 const formButtonAdd= document.querySelector("#form__button_add");
-
 // B O T O N   P A R A   C E R R A R   E L   P O P U P PARA AGREGAR TARJETAS
 const popupCloseAdd = document.querySelector(".popup__close-add");
 // M O S T R A R   L A   I M A G E N   E N  P O P U P
@@ -43,10 +39,8 @@ const profileButtonUpdate = document.querySelector(".profile__avatar-edition");
 export const formUpdate = document.querySelector(".form__update");
 const buttonUpdate = document.querySelector("#button__update");
 const buttonCloseUpdate = document.querySelector(".popup__close-update");
-export const avatar = document.querySelector(".avatar__imagen");
-
+export const avatar = document.querySelector(".profile__avatar-imagen");
 export const formBotton = document.querySelector(".form__button");
-
 // Creando instancias de clases
 export const userInfo = new UserInfo(
   "#nameUser",
@@ -58,7 +52,6 @@ const updateAvatar = new PopupWithForm(
   ".popup__update",
   ".popup__close-update"
 );
-
 const popupProfile = new PopupWithForm(
   ".popup__edit",
   ".popup__close-edit",
@@ -78,7 +71,6 @@ const popupProfile = new PopupWithForm(
   }
 );
 popupProfile.setEventListeners();
-
 //FUNCION PARA ABRIR EL FORMULARIO EDIT
 export function openProfileEdit() {
   popupProfile.open();
@@ -91,17 +83,14 @@ export function saveProfileInfo(e) {
 export function closeProfileEdit() {
   popupProfile.setEventListeners();
 }
-
 // A G R E G A R   T A R J E T A S   D E   I M A G E N E S
 export function buttonAddCards() {
   popUpAdd.open();
 }
-
 // ELIMINAR POPUP FORMULARIO CARDS
 export function closeFormAdd() {
   popUpAdd.close();
 }
-
 function openUpdateAvatar() {
   updateAvatar.open();
 }
@@ -123,11 +112,9 @@ export function UpdateInfoAvatar(e) {
     console.error(err);
   });
 }
-
 function closeButtonUpdate() {
   updateAvatar.close();
 }
-
 // F U N C I O N   A G R E G A R   T A R J E T A
 export function addCards(e) {
   e.preventDefault();
@@ -144,7 +131,6 @@ export function addCards(e) {
   })
  
 }
-
 profileButtonAdd.addEventListener("click", buttonAddCards);
 formElement[1].addEventListener("submit", addCards);
 popupCloseAdd.addEventListener("click", closeFormAdd);

@@ -26,9 +26,8 @@ api.getInitialCards().then((data) => {
     {
       items: data,
       renderer: () => {
-        // C A R G A N D O   I M A G E N E S  E N   E L   C O N T A I N E R -> SECTION
         data.forEach(function (item) {
-          const card = new Card(item.name, item.link, item.templateCard, () => {}, item._id, item.likes);
+          const card = new Card(item.name, item.link, item.templateCard, () => {}, item._id, item.likes, item.owner._id);
           cards.append(card.generateCard());
         });
       },

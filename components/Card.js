@@ -6,26 +6,27 @@ import {
 } from "./utils.js";
 
 import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithConfirmation } from "./PopupWithConfirmation .js";
+import { Popup } from "./Popup.js";
 import { api } from "../src/index.js";
 
 const popUpImages = new PopupWithImage(
   ".popup__images",
   ".popup__close-images"
 );
-const popupConfirm = new PopupWithConfirmation(
+const popupConfirm = new Popup(
   ".popup__confirm",
   ".popup__close-confirm"
 );
 
 export class Card {
-  constructor(name, link, templateCard, handleCardClick, id, likes) {
+  constructor(name, link, templateCard, handleCardClick, id, likes, userId) {
     this.name = name;
     this.link = link;
     this.templateCard = templateCard;
     this.handleCardClick = handleCardClick;
     this.id = id;
     this.likes = likes;
+    this.userId = userId;
   }
 
   _getTemplate() {
@@ -39,34 +40,33 @@ export class Card {
     this.cardLike = this.card.querySelector(".card__like");
     this.likeButton = this.card.querySelector(".card__like_count");
     this.buttonTrash = this.card.querySelector(".card__trash");
-
+    
+    if (this.userId === "5f1ef69bb878ef5b06364d6a") {
+      this.buttonTrash;
+    }else{
+      this.buttonTrash.remove();
+    }
+    
     this.cardImg.src = this.link;
     this.cardImg.alt = this.name;
     this.cardName.textContent = this.name;
     this.likeButton.textContent = this.likes.length;
     if (this.likes.some(item=> item._id === "5f1ef69bb878ef5b06364d6a")) {
-      setTimeout(() => {
-        this.cardLike.classList.toggle("card__like-active");
-      }, 0);
+      this.cardLike.classList.toggle("card__like-active");
     }
   }
 
   _handleLike() {
-    if (!this.likes.some( item => item._id === "5f1ef69bb878ef5b06364d6a")) {
-      setTimeout(() => {
-        this.cardLike.classList.toggle("card__like-active");
-      }, 0);
+    if (!this.likes.some(item => item._id === "5f1ef69bb878ef5b06364d6a")) {
       api.likeCard(this.id).then((data) => {
         this.likeButton.textContent = data.likes.length;
+        this.cardLike.classList.toggle("card__like-active");
       });
     } else {
       api.dislikeCard(this.id).then((data) => {
-        console.log(data.likes)
         this.likeButton.textContent = data.likes.length;
-      });
-      setTimeout(() => {
         this.cardLike.classList.toggle("card__like-active");
-      }, 0);
+      });
     }
   }
 

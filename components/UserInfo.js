@@ -13,9 +13,7 @@ export class UserInfo {
     };
   }
   setUserInfo(userInfo) {
-    console.log(userInfo)
     this.nameElement.textContent = userInfo.nameUser;
-    console.log(this.nameElement)
     this.aboutUsElement.textContent = userInfo.aboutUs;
     if (userInfo.avatar) {
       this.avatarElement.src = userInfo.avatar
